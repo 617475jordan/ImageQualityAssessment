@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<old_ssim>8.4438289339332107e-001</old_ssim>
+<old_ssim_cost>8.4000000000000005e-002</old_ssim_cost>
+<new_ssim>8.4083580314434958e-001</new_ssim>
+<new_ssim_cost>7.0000000000000007e-002</new_ssim_cost>
+<Hash>3.</Hash>
+<Dhash>3.</Dhash>
+<Phash>8.</Phash>
+<IQA>8.4438289339332107e-001</IQA>
+<win_ssim>7.5707716471123920e-001</win_ssim>
+</opencv_storage>
