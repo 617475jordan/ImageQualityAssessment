@@ -20,9 +20,11 @@ public:
 	double hashDistance();
 	double PhashDistance();
 	double DhashDistance();
+	double Nc(Mat srcImage, Mat keyImage);
 private:
 	Mat calcHashCode(Mat src);
 	Mat calcPHashCode(Mat src);
 	Mat calcDHashCode(Mat src);
+
 };
 

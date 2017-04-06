@@ -3,8 +3,8 @@
 #include <ctime>
 
 int main(int argc,char** argv){
-	String reference = "test//10.png";
-	String  source = "test//result.png";
+	String reference = "test//qq.png";
+	String  source = "test//ps.png";
 	Mat referenceImage = imread(reference, 0);
 	Mat sourceImage = imread(source, 0);
 	if (referenceImage.empty() || sourceImage.empty())
@@ -41,15 +41,19 @@ int main(int argc,char** argv){
 	double Phash = ssim.PhashDistance();
 	double Iqa = IQA(referenceImage, sourceImage);
 	double win_ssim = blockIQA(referenceImage, sourceImage, 2);
+
+	double Nc = ssim.Nc(sourceImage, referenceImage);
 	cout << "Hash: " << Hash << endl;
 	cout << "Dhash: " << Dhash << endl;
 	cout << "Phash: " << Phash << endl;
 	cout << "IQA: " << Iqa << endl;
 	cout << "win_ssim: " << win_ssim << endl;
+	cout << "Nc: " << Nc << endl;
 	//cout << ssim.sigma(referenceImage, 0, 0) << endl;
 	cout << "数据保存" << endl;
 	FileStorage file;
-	file.open("IQAData0.xml", FileStorage::WRITE);
+	file.open("IQAData2.xml", FileStorage::WRITE);
+	//file << "Compare_PS_with_Origin";
 	file << "old_ssim" << old_ssim;
 	file << "old_ssim_cost" << old_ssim_cost;
 	file << "new_ssim" << new_ssim;
@@ -59,9 +63,10 @@ int main(int argc,char** argv){
 	file << "Phash" << Phash;
 	file << "IQA" << Iqa;
 	file << "win_ssim" << win_ssim;
+	file << "Nc" << Nc;
 	file.release();
 	cout << "数据保存完毕" << endl;
-	waitKey();
-	while (1);
+	//while (1);
+	waitKey(0);
 	return 0;
 }

@@ -160,3 +160,42 @@ Mat ImageQualityAssessment::calcDHashCode(Mat src){
 	}
 	return mask;
 }
+
+//计算两幅图像的鲁棒性
+//参数: src 原图像
+//参数: key 指纹加密的图像
+
+double ImageQualityAssessment::Nc(Mat srcImage, Mat keyImage)
+{
+	IplImage* src;
+	IplImage* key;
+	src = &(IplImage)srcImage;
+	key = &(IplImage)keyImage;
+	int width = src->width;       //图像宽
+	int height = src->height;     //图像高
+
+	CvScalar s_src;               //原图像的像素通道结构体
+	CvScalar s_key;               //加密后的像素通道结构体
+
+	double d = 0.0;
+	double d_src = 0.0;
+	double d_key = 0.0;
+
+	for (int row = 0; row < height; row++) {
+		for (int col = 0; col < width; col++) {
+			s_src = cvGet2D(src, row, col);
+			s_key = cvGet2D(key, row, col);
+			double src_r = s_src.val[0];        //取出G通道的像素值
+			double key_r = s_key.val[0];
+			d += src_r * key_r;
+			d_src += src_r * src_r;
+			d_key += key_r * key_r;
+		}
+	}
+
+	//nc是鲁棒性指标
+	double nc = 0.0;
+	nc = d / (sqrt(d_src) * sqrt(d_key));
+
+	return nc;
+}
