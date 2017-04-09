@@ -3,8 +3,8 @@
 #include <ctime>
 
 int main(int argc,char** argv){
-	String reference = "test//qq.png";
-	String  source = "test//ps.png";
+	String reference = "src//2.jpg";
+	String  source = "src//2.png";
 	Mat referenceImage = imread(reference, 0);
 	Mat sourceImage = imread(source, 0);
 	if (referenceImage.empty() || sourceImage.empty())
@@ -52,7 +52,7 @@ int main(int argc,char** argv){
 	//cout << ssim.sigma(referenceImage, 0, 0) << endl;
 	cout << "数据保存" << endl;
 	FileStorage file;
-	file.open("IQAData2.xml", FileStorage::WRITE);
+	file.open("data//IQAData.xml", FileStorage::WRITE);
 	//file << "Compare_PS_with_Origin";
 	file << "old_ssim" << old_ssim;
 	file << "old_ssim_cost" << old_ssim_cost;
@@ -66,7 +66,7 @@ int main(int argc,char** argv){
 	file << "Nc" << Nc;
 	file.release();
 	cout << "数据保存完毕" << endl;
-	//while (1);
+	while (1);
 	waitKey(0);
 	return 0;
 }
