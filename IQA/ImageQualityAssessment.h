@@ -14,9 +14,7 @@ public:
 	~ImageQualityAssessment();
 	double ssim();
 	double ssim(Mat& referenceImage, Mat& sourceImage, bool showProgress = false);
-
 	double psnr();
-
 	double hashDistance();
 	double PhashDistance();
 	double DhashDistance();

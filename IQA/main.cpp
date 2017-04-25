@@ -3,8 +3,8 @@
 #include <ctime>
 
 int main(int argc,char** argv){
-	String reference = "src//2.jpg";
-	String  source = "src//2.png";
+	String reference = "src//src.png";
+	String  source = "src//ref.png";
 	Mat referenceImage = imread(reference, 0);
 	Mat sourceImage = imread(source, 0);
 	if (referenceImage.empty() || sourceImage.empty())
